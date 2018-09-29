@@ -62,7 +62,7 @@ module PagSeguro
         data[:gross_amount] = BigDecimal(xml.css("grossAmount").text)
         data[:discount_amount] = BigDecimal(xml.css("discountAmount").text)
         data[:net_amount] = BigDecimal(xml.css("netAmount").text)
-        data[:extra_amount] = BigDecimal(xml.css("extraAmount").text)
+        data[:extra_amount] = BigDecimal(xml.css("extraAmount").text) if xml.css("extraAmount").text.present?
         data[:installments] = xml.css("installmentCount").text.to_i
       end
 

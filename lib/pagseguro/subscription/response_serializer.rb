@@ -31,7 +31,7 @@ module PagSeguro
 
       def serialize_sender
         {}.tap do |data|
-          data[:name] = xml.at_css('sender > name').text
+          data[:name] = xml.at_css('sender > name').text if xml.at_css('sender > name')
           data[:email] = xml.at_css('sender > email').text
           data[:phone] = serialize_phone if xml.at_css('phone')
           data[:address] = serialize_address if xml.at_css('address')
